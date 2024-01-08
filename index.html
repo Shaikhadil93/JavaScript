@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Enter input show in table formate</title>
+</head>
+
+<body>
+    <div id="formContainer">
+        <label for="nameInput">
+            Name:
+        </label>
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        <label for="emailInput">
+            Email I'd:
+        </label>
+        <input type="email" id="emailInput" placeholder="Enter your email">
+        <label for="numberInput">
+            Mobile Details:
+        </label>
+        <input type="text" id="numberInput" placeholder="Enter your mobile details">
+        <label for="addressInput">
+            Address:
+        </label>
+        <textarea id="addressInput" placeholder="Enter your address">
+        </textarea>
+        <button onclick="addData()">
+            Add
+        </button>
+    </div>
+    <table id="tableShow">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile Details</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+    </table>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
