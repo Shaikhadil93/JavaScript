@@ -1,105 +1,72 @@
-//Array of object 
-const personal = [
-    // {
-    //     name: "",
-    //     email: "",
-    //     phone: "",
-    //     adress: "",
-    // },
-];
-
-//console.log(personal);
-
+var selectedRow = null;
 
 //Add data to table
 function addData() {
-    //get value from the innput field
-    let nameInput = document.getElementById("nameInput").value;
-    let emailInput = document.getElementById("emailInput").value;
-    let numberInput = document.getElementById("numberInput").value;
-    let addressInput = document.getElementById("addressInput").value;
-
-    //append data to the array 
-    personal.push(nameInput);
-    // personal.push(emailInput.email);
-    // personal.push(numberInput.number);
-    // personal.push(addressInput.address);
-
-    let perdata = [];
-    for (var i = 0; i < personal.length; i++) {
-        perdata = perdata + personal[i];
-        let table = document.getElementById("tableShow");
-        var newRow = table.insertRow(table.rows.length);
+    var formData = readFormData();
+    if (selectedRow == null) {
+        insertNewRecord(formData);
+    } else {
+        updateRecord(formData);
     }
-    newRow.insertCell(0).innerHTML = i;
-    newRow.insertCell(1).innerHTML = perdata;
-    newRow.insertCell(2).innerHTML = perdata;
-    newRow.insertCell(3).innerHTML = perdata;
-    newRow.insertCell(4).innerHTML = perdata;
-    newRow.insertCell(5).innerHTML = `<button onclick= "editData(this)")"> Edit </button>` +
-        `<button onclick= "deleteData(this)"> Delete </button>`
-
-    //     //diplay array data in table
-    //     // document.getElementById("sNO").innerHTML=perdata.name; 
-    //     document.getElementById("tName").innerHTML = perdata.name;
-    //     document.getElementById("tEmail").innerHTML = perdata.email;
-    //     document.getElementById("tNumber").innerHTML = perdata.number;
-    //     document.getElementById("tAddress").innerHTML = perdata.address;
-    //     document.getElementById("action").value =
-
-    clearInput();
+    clearInput(formData);
 };
 
 
-// function addData() {
+//reading data from Form
+function readFormData(){
+   var formData = {};
+   formData["nameInput"]=document.getElementById("nameInput").value; 
+   formData["emailInput"]=document.getElementById("emailInput").value;
+   formData["numberInput"]=document.getElementById("numberInput").value;
+   formData["addressInput"]=document.getElementById("addressInput").value;
+   
+   console.log(formData["nameInput"]);
+   console.log(formData["emailInput"]);
+   console.log(formData["numberInput"]);
+   console.log(formData["addressInput"]);
+   
+   return formData;
+}
 
-//     let name = document.getElementById("nameInput").value;
-//     let email = document.getElementById("emailInput").value;
-//     let number = document.getElementById("numberInput").value;
-//     let address = document.getElementById("addressInput").value;
+//insert new record to table
+function insertNewRecord(data){
+    var table = document.getElementById("tableShow").getElementsByTagName("tbody")[0];
+    var newRow = table.insertRow(table.length);
 
-//     let table = document.getElementById("tableShow");
-//     var newRow = table.insertRow(table.rows.length);
+    console.log(newRow);
 
-//     newRow.insertCell(0).innerHTML = "";
-//     newRow.insertCell(1).innerHTML = name;
-//     newRow.insertCell(2).innerHTML = email;
-//     newRow.insertCell(3).innerHTML = number;
-//     newRow.insertCell(4).innerHTML = address;
-//     newRow.insertCell(5).innerHTML = `<button onclick= "editData(this)")"> Edit </button>` +
-//         `<button onclick= "deleteData(this)"> Delete </button>`
-
-//     clearInput();
-// }
-
-// function editData(Button) {
-//     let row = Button.parentNode.parentNode;
-
-//     let nameCell = row.cells[1];
-//     let emailCell = row.cells[2];
-//     let numberCell = row.cells[3];
-//     let addressCell = row.cells[4];
-
-//     let nameInput = document.getElementById("nameInput");
-//     let emailInput = document.getElementById("emailInput");
-//     let numberInput = document.getElementById("numberInput");
-//     let addressInput = document.getElementById("addressInput");
-
-//     nameInput.value = nameCell.innerHTML;
-//     emailInput.value = emailCell.innerHTML;
-//     numberInput.value = numberCell.innerHTML;
-//     addressInput.value = addressCell.innerHTML;
+    cell1=newRow.insertCell(0);
+    // cell1.innerHTML=i;
+    cell2=newRow.insertCell(1);
+    cell2.innerHTML = data.nameInput;
+    cell3=newRow.insertCell(2);
+    cell3.innerHTML = data.emailInput;
+    cell4=newRow.insertCell(3);
+    cell4.innerHTML = data.numberInput;
+    cell5=newRow.insertCell(4);
+    cell5.innerHTML = data.addressInput;
+    cell6=newRow.insertCell(5);
+    cell6.innerHTML=`<button onclick= "editData(this)")"> Edit </button>` +
+            `<button onclick= "deleteData(this)"> Delete </button>`
+}
 
 
-//     // nameCell.value= nameInput1.innerHTML;
-//     // emailCell.value= emailInput1.innerHTML;
-//     // numberCell.value= numberInput1.innerHTML;
-//     // addressCell.value= addressInput1.innerHTML;
-// }
+//Edit table data 
+function editData(Button) {
+    selectedRow = Button.parentNode.parentNode;
+    document.getElementById("nameInput").value=selectedRow.cells[1].innerHTML;
+    document.getElementById("emailInput").value=selectedRow.cells[2].innerHTML;
+    document.getElementById("numberInput").value=selectedRow.cells[3].innerHTML;
+    document.getElementById("addressInput").value=selectedRow.cells[4].innerHTML;
+}
 
-// function changeData(){
-//     alert("change")
-// }
+//Update table data
+function updateRecord(formData){
+    selectedRow.cells[1].innerHTML=formData.nameInput;
+    selectedRow.cells[2].innerHTML=formData.emailInput;
+    selectedRow.cells[3].innerHTML=formData.numberInput;
+    selectedRow.cells[4].innerHTML=formData.addressInput;
+}
 
 
 //Delete data from table 
@@ -115,4 +82,5 @@ function clearInput() {
     document.getElementById("emailInput").value = "";
     document.getElementById("numberInput").value = "";
     document.getElementById("addressInput").value = "";
+    selectedRow=null;
 }
