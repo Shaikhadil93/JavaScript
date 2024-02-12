@@ -1,4 +1,5 @@
 var selectedRow = null;
+var i=1;
 
 //Add data to table
 function addData() {
@@ -20,10 +21,10 @@ function readFormData() {
     formData["numberInput"] = document.getElementById("numberInput").value;
     formData["addressInput"] = document.getElementById("addressInput").value;
 
-    console.log(formData["nameInput"]);
-    console.log(formData["emailInput"]);
-    console.log(formData["numberInput"]);
-    console.log(formData["addressInput"]);
+    // console.log(formData["nameInput"]);
+    // console.log(formData["emailInput"]);
+    // console.log(formData["numberInput"]);
+    // console.log(formData["addressInput"]);
 
     return formData;
 }
@@ -32,10 +33,11 @@ function readFormData() {
 function insertNewRecord(data) {
     var table = document.getElementById("tableShow").getElementsByTagName("tbody")[0];
     var newRow = table.insertRow(table.length);
-
-    console.log(newRow);
+    
+    console.log(i);
+    // console.log(newRow);
     cell1 = newRow.insertCell(0);
-    // cell1.innerHTML=i;
+    cell1.innerHTML=i++;          //increament of serial number
     cell2 = newRow.insertCell(1);
     cell2.innerHTML = data.nameInput;
     cell3 = newRow.insertCell(2);
@@ -86,3 +88,6 @@ function clearInput() {
     document.getElementById("addressInput").value = "";
     selectedRow = null;
 }
+
+
+//project done successfully
