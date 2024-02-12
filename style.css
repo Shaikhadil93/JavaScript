@@ -51,3 +51,7 @@ th {
     background-color: #8aef8d; 
     color: #000; 
 } 
+
+#clear{
+    display: none;
+}

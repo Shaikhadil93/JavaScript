@@ -28,8 +28,11 @@
         </label>
         <textarea class="inputData" required id="addressInput" placeholder="Enter your address">
         </textarea>
-        <button onclick="event.preventDefault(); addData() ">
+        <button id="add" onclick="event.preventDefault(); addData() ">
             Add
+        </button>
+        <button id="clear" onclick="event.preventDefault(); clearInput()">
+            Clear
         </button>
     </div>
     <table id="tableShow">
