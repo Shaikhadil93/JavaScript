@@ -34,10 +34,10 @@ function insertNewRecord(data) {
     var table = document.getElementById("tableShow").getElementsByTagName("tbody")[0];
     var newRow = table.insertRow(table.length);
     
-    console.log(i);
+    // console.log(i);
     // console.log(newRow);
     cell1 = newRow.insertCell(0);
-    cell1.innerHTML=i++;          //increament of serial number
+    cell1.innerHTML=i++;          //increament of serial number in table
     cell2 = newRow.insertCell(1);
     cell2.innerHTML = data.nameInput;
     cell3 = newRow.insertCell(2);
